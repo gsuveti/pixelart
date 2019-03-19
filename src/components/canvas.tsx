@@ -23,16 +23,16 @@ class Canvas extends Component<Props, State> {
         this.getRow = this.getRow.bind(this);
     }
 
-    getRow(index: number, width: number) {
-        const {pixels: pixelsMap} = this.props.canvas;
+    getRow(y: number, width: number) {
+        const {pixels} = this.props.canvas;
 
-        const pixels = new Array(width).fill(null).map((_, y) => {
-            const position = {x: index, y: y};
-            const pixelColor = pixelsMap.get(position.x + "_" + position.y);
+        const pixelsComponents = new Array(width).fill(null).map((_, x) => {
+            const position = {x: x, y: y};
+            const pixelColor = pixels[x + "_" + y];
             const color = pixelColor ? undefined : 'red';
 
             return (
-                <div key={y} onClick={() => {
+                <div key={x} onClick={() => {
                     this.props.paintPixel({position, color: color})
                 }}>
                     <Pixel color={pixelColor}></Pixel>
@@ -40,8 +40,8 @@ class Canvas extends Component<Props, State> {
             )
         });
         return (
-            <Row key={index}>
-                {pixels}
+            <Row key={y}>
+                {pixelsComponents}
             </Row>
         );
     }

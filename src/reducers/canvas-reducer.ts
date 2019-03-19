@@ -5,7 +5,7 @@ import { ActionTypes, INCREASE_LENGTH, INCREASE_WIDTH, PAINT_PIXEL } from '../ac
 export default (state: CanvasState = {
     length: 3,
     width: 2,
-    pixels: new Map<string, (string | undefined)>()
+    pixels: {}
 }, action: ActionTypes) => {
     switch (action.type) {
         case INCREASE_LENGTH:
@@ -20,12 +20,12 @@ export default (state: CanvasState = {
             };
         case PAINT_PIXEL:
             const {position, color} = action.payload;
-            const pixels = new Map<string, (string | undefined)>(state.pixels).set(position.x + "_" + position.y, color);
-
-            return {
+            const pixels = {...state.pixels, [position.x + "_" + position.y]: color}
+            const newState = {
                 ...state,
                 pixels
             };
+            return newState;
         default:
             return state;
     }

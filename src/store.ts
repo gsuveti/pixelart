@@ -5,7 +5,9 @@ import { reducers } from "./reducers";
 export interface CanvasState {
     length: number;
     width: number;
-    pixels: Map<string, (string | undefined)>
+    pixels: {
+        [k: string]: string | undefined
+    }
 }
 
 export interface AppState {
@@ -14,7 +16,7 @@ export interface AppState {
 
 export default function configureStore(initialState: AppState = {
     canvas: {
-        length: 4, width: 4, pixels: new Map()
+        length: 4, width: 4, pixels: {}
     },
 }) {
     return createStore(
