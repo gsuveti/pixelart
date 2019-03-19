@@ -1,4 +1,4 @@
-import { INCREASE_LENGTH, INCREASE_WIDTH, PAINT_PIXEL } from './types';
+import { INCREASE_LENGTH, INCREASE_WIDTH, PAINT_PIXEL, PaintObject, PaintPixelAction } from './types';
 
 
 export function increaseLength(value: number) {
@@ -27,12 +27,9 @@ export function increaseWidth(value: number) {
     }
 }
 
-export function paintPixel(position: { x: number, y: number }, color: string | undefined) {
+export function paintPixel(paintObject: PaintObject): PaintPixelAction {
     return {
         type: PAINT_PIXEL,
-        payload: {
-            position,
-            color
-        }
+        payload: paintObject
     }
 }

@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { increaseLength, increaseLengthAsync, increaseWidth, paintPixel } from '../actions/actions';
+import { paintPixel } from '../actions/actions';
 import styled from 'styled-components';
 import { AppState, CanvasState } from '../store';
-
+import { ActionTypes, PaintObject } from '../actions/types';
+import { Dispatch } from 'redux';
 
 
 interface Props {
     canvas: CanvasState,
-    increaseLength: (value: number) => any
-    increaseWidth: (value: number) => any
-    increaseLengthAsync: (value: number) => any
-    paintPixel: (position: { x: number, y: number }, color: string | undefined) => any
+    paintPixel: typeof paintPixel
 }
 
 interface State {
@@ -30,13 +28,14 @@ class Canvas extends Component<Props, State> {
 
         const pixels = new Array(width).fill(null).map((_, y) => {
             const position = {x: index, y: y};
-            const color = pixelsMap.get(position.x + "_" + position.y);
+            const pixelColor = pixelsMap.get(position.x + "_" + position.y);
+            const color = pixelColor ? undefined : 'red';
 
             return (
                 <div key={y} onClick={() => {
-                    this.props.paintPixel(position, color ? undefined : "red")
+                    this.props.paintPixel({position, color: color})
                 }}>
-                    <Pixel color={color}></Pixel>
+                    <Pixel color={pixelColor}></Pixel>
                 </div>
             )
         });
@@ -54,7 +53,7 @@ class Canvas extends Component<Props, State> {
 
         return (
             <div>
-              <RowWrapper>{rows}</RowWrapper>
+                <RowWrapper>{rows}</RowWrapper>
             </div>
         );
     }
@@ -86,11 +85,8 @@ function mapStateToProps(state: AppState) {
     };
 }
 
-const mapDispatchToProps = (dispatch: any) => ({
-    increaseLength: (value: number) => dispatch(increaseLength(value)),
-    increaseWidth: (value: number) => dispatch(increaseWidth(value)),
-    paintPixel: (position: { x: number, y: number }, color: string | undefined) => dispatch(paintPixel(position, color)),
-    increaseLengthAsync: (value: number) => dispatch(increaseLengthAsync(value))
+const mapDispatchToProps = (dispatch: Dispatch<ActionTypes>) => ({
+    paintPixel: (paintObject: PaintObject) => dispatch(paintPixel(paintObject)),
 });
 
 export default connect(

@@ -6,18 +6,28 @@ import styled from 'styled-components';
 class ActionsPanel extends Component<any, any> {
     render() {
         return (
-            <Wrapper>
-                <button className={"btn"} onClick={() => this.props.increaseWidth(-1)}>Width-</button>
-                <button className={"btn"} onClick={() => this.props.increaseWidth(1)}>Width+</button>
+            <WrapperRow>
+                <WrapperCol>
+                    <button className={"btn"} onClick={() => this.props.increaseWidth(-1)}>Width-</button>
+                    <button className={"btn"} onClick={() => this.props.increaseWidth(1)}>Width+</button>
+                </WrapperCol>
                 <br/>
-                <button className={"btn"} onClick={() => this.props.increaseLength(-1)}>Length-</button>
-                <button className={"btn"} onClick={() => this.props.increaseLength(1)}>Length+</button>
-            </Wrapper>
+
+                <WrapperCol>
+                    <button className={"btn"} onClick={() => this.props.increaseLength(-1)}>Length-</button>
+                    <button className={"btn"} onClick={() => this.props.increaseLength(1)}>Length+</button>
+                </WrapperCol>
+            </WrapperRow>
         );
     }
 }
 
-const Wrapper = styled.div`
+const WrapperRow = styled.div`
+display: flex;
+flex-direction: row;
+`;
+
+const WrapperCol = styled.div`
 display: flex;
 flex-direction: column;
 `;
@@ -30,7 +40,6 @@ const mapDispatchToProps = (dispatch: any) => ({
 
 
 export default connect(
-    () => {
-    },
+    null,
     mapDispatchToProps
 )(ActionsPanel);
