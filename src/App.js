@@ -1,28 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.scss'
+import styled from 'styled-components'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Game from './components/tic-tac-toe/game'
+import Pixelart from './components/pixelart'
+
+let Wrapper = styled.section`
+  width: 60%;
+  margin: 20px auto;
+`
 
 class App extends Component {
-  render() {
+
+  render () {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Wrapper>
+          <Router>
+            <Route path="/tic-tac-toe" exact component={Game}/>
+            <Route path="/" exact component={Pixelart}/>
+          </Router>
+        </Wrapper>
       </div>
-    );
+
+    )
   }
 }
 
-export default App;
+export default App
