@@ -1,5 +1,6 @@
-import React, {Component} from 'react'
-import {Board} from './board'
+import React, { Component } from 'react'
+import { Board } from './board'
+import UserProfile from './user-profile';
 
 interface Props {
 }
@@ -8,7 +9,6 @@ interface State {
     history: { squares: any[] }[]
     xIsNext: boolean;
     stepNumber: number
-
 }
 
 class Game extends Component<Props, State> {
@@ -22,6 +22,7 @@ class Game extends Component<Props, State> {
             stepNumber: 0
         }
     }
+
 
     handleClick(i: number) {
         const history = this.state.history.slice(0, this.state.stepNumber + 1);
@@ -84,18 +85,20 @@ class Game extends Component<Props, State> {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
         }
 
-
         return (
-            <div className="game">
-                <div className="game-board">
-                    <Board
-                        squares={squares}
-                        onClick={(i) => this.handleClick(i)}
-                    />
-                </div>
-                <div className="game-info">
-                    <div>{status}</div>
-                    <div>{moves}</div>
+            <div>
+                <UserProfile/>
+                <div className="game">
+                    <div className="game-board">
+                        <Board
+                            squares={squares}
+                            onClick={(i) => this.handleClick(i)}
+                        />
+                    </div>
+                    <div className="game-info">
+                        <div>{status}</div>
+                        <div>{moves}</div>
+                    </div>
                 </div>
             </div>
         )

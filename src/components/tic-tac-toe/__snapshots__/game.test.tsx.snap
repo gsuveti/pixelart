@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div>
+    <div
+      data-test="name"
+    />
+    <div
+      data-test="role"
+    >
+      
+    </div>
+    <div
+      data-test="color"
+    >
+      
+    </div>
+  </div>
+  <div
+    className="game"
+  >
+    <div
+      className="game-board"
+    >
+      <div
+        className="sc-htpNat jRiZDM"
+      >
+        <div
+          className="sc-bwzfXH cpnAaf"
+        >
+          <button
+            className="sc-bdVaJa eAEVDY"
+            onClick={[Function]}
+          />
+          <button
+            className="sc-bdVaJa eAEVDY"
+            onClick={[Function]}
+          />
+          <button
+            className="sc-bdVaJa eAEVDY"
+            onClick={[Function]}
+          />
+        </div>
+        <div
+          className="sc-bwzfXH cpnAaf"
+        >
+          <button
+            className="sc-bdVaJa eAEVDY"
+            onClick={[Function]}
+          />
+          <button
+            className="sc-bdVaJa eAEVDY"
+            onClick={[Function]}
+          />
+          <button
+            className="sc-bdVaJa eAEVDY"
+            onClick={[Function]}
+          />
+        </div>
+        <div
+          className="sc-bwzfXH cpnAaf"
+        >
+          <button
+            className="sc-bdVaJa eAEVDY"
+            onClick={[Function]}
+          />
+          <button
+            className="sc-bdVaJa eAEVDY"
+            onClick={[Function]}
+          />
+          <button
+            className="sc-bdVaJa eAEVDY"
+            onClick={[Function]}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="game-info"
+    >
+      <div>
+        Next player: X
+      </div>
+      <div>
+        <div>
+          <button
+            className="btn"
+            onClick={[Function]}
+          >
+            Go to game start
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
