@@ -9,3 +9,5 @@ it('renders correctly', () => {
 
     expect(tree).toMatchSnapshot()
 });
+
+export default undefined;

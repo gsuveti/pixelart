@@ -1,5 +1,6 @@
 import Logger from './logger';
 
+
 const mockLogFn = jest.fn().mockImplementation(
     (msg: string) => {
         console.log(msg);
@@ -51,3 +52,5 @@ it('Logger warn', async () => {
     Logger.warn("test4");
     expect(mocWarnFn).toHaveBeenCalledTimes(1);
 });
+
+export default undefined;

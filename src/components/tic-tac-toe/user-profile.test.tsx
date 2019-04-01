@@ -43,3 +43,5 @@ it('renders correctly', async () => {
     expect(tree.find(`[data-test='role']`).text()).toBe(mock_role);
     expect(tree.find(`[data-test='color']`).text()).toBe(mock_color);
 });
+
+export default undefined;

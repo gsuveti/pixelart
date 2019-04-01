@@ -18,3 +18,5 @@ it('UserEndpoint fetch2', async () => {
     UserEndpoint.fetchUser().then();
     expect(spiedUserEndpointFetch).toHaveBeenCalledTimes(1);
 });
+
+export default undefined;

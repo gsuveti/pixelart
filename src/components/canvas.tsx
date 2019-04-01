@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { paintPixel } from '../actions/actions';
+import { increaseLengthAsync, paintPixel } from '../actions/actions';
 import styled from 'styled-components';
 import { AppState, CanvasState } from '../store';
 import { ActionTypes, PaintObject } from '../actions/types';
-import { Dispatch } from 'redux';
+import { AnyAction, Dispatch } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
 
 
 interface Props {
@@ -85,8 +86,9 @@ function mapStateToProps(state: AppState) {
     };
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<ActionTypes>) => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, AnyAction>) => ({
     paintPixel: (paintObject: PaintObject) => dispatch(paintPixel(paintObject)),
+    increaseLengthAsync: (value: number) => dispatch(increaseLengthAsync(value)),
 });
 
 export default connect(

@@ -1,9 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { increaseLength, increaseWidth } from '../actions/actions';
+import { increaseLength, increaseLengthAsync, increaseWidth } from '../actions/actions';
 import styled from 'styled-components';
+import { ActionCreator, ActionCreatorsMapObject, bindActionCreators, Dispatch } from 'redux';
+import { AppActions, IncreaseLengthAction, IncreaseWidthAction } from '../actions/types';
 
-class ActionsPanel extends Component<any, any> {
+interface OwnProps {
+}
+
+interface DispatchProps extends ActionCreatorsMapObject<AppActions> {
+    increaseLength: ActionCreator<IncreaseLengthAction>
+    increaseWidth: ActionCreator<IncreaseWidthAction>
+    increaseLengthAsync: ActionCreator<AppActions>
+}
+
+interface StateProps {
+}
+
+type Props = StateProps & OwnProps & DispatchProps
+
+
+class ActionsPanel extends Component<Props, any> {
     render() {
         return (
             <WrapperRow>
@@ -14,7 +31,7 @@ class ActionsPanel extends Component<any, any> {
                 <br/>
 
                 <WrapperCol>
-                    <button className={"btn"} onClick={() => this.props.increaseLength(-1)}>Length-</button>
+                    <button className={"btn"} onClick={() => this.props.increaseLengthAsync(-1)}>Length-</button>
                     <button className={"btn"} onClick={() => this.props.increaseLength(1)}>Length+</button>
                 </WrapperCol>
             </WrapperRow>
@@ -33,13 +50,15 @@ flex-direction: column;
 `;
 
 
-const mapDispatchToProps = (dispatch: any) => ({
-    increaseLength: (value: number) => dispatch(increaseLength(value)),
-    increaseWidth: (value: number) => dispatch(increaseWidth(value))
-});
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
+    bindActionCreators<AppActions, DispatchProps>({
+        increaseLength,
+        increaseWidth,
+        increaseLengthAsync
+    }, dispatch);
 
 
-export default connect(
+export default connect<StateProps, DispatchProps, OwnProps>(
     null,
     mapDispatchToProps
 )(ActionsPanel);
