@@ -2,6 +2,7 @@ import React from 'react';
 import UserProfile from './user-profile';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import { tick } from '../../tests/utils';
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -34,13 +35,9 @@ beforeEach(() => {
 });
 
 
-const flushPromises = (ms: number = 0) => new Promise(resolve => {
-    ms ? setInterval(resolve, ms) : setImmediate(resolve);
-});
-
 it('renders correctly', async () => {
     const tree = shallow(<UserProfile/>);
-    await flushPromises();
+    await tick();
 
     expect(tree.find(`[data-test='name']`).text()).toBe("Eduard");
     expect(tree.find(`[data-test='role']`).text()).toBe(mock_role);
