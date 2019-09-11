@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import canvasReducer from './canvas-reducer';
+import pixelArtReducer from './pixelart-reducer';
+import userSettingsReducer from './user-settings-reducer';
 
 export const reducers = combineReducers({
-    canvas: canvasReducer
+    canvas: pixelArtReducer,
+    userSettings: userSettingsReducer
 });

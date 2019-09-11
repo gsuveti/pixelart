@@ -6,15 +6,18 @@ import {
     PAINT_PIXEL,
     PaintObject,
     PaintPixelAction
-} from './types';
+} from '../constants/pixelart-types';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { ActionCreator } from 'redux';
 import { action } from 'typesafe-actions';
 
-export const increaseLength: ActionCreator<IncreaseLengthAction> = (value: number) =>
+export const increaseLength= (value: number) =>
     action(INCREASE_LENGTH, {
         value: value
     });
+
+export type IncreaseLengthActionCreator = typeof increaseLength
+
 
 
 export const increaseWidth: ActionCreator<IncreaseWidthAction> = (value: number) => {
@@ -26,7 +29,7 @@ export const increaseWidth: ActionCreator<IncreaseWidthAction> = (value: number)
     }
 };
 
-export const increaseLengthAsync: ActionCreator<ThunkAction<void, {}, {}, IncreaseLengthAction>> = (value: number) => {
+export const increaseLengthAsync = (value: number) => {
     return (dispatch: ThunkDispatch<{}, {}, IncreaseLengthAction>) => {
         setTimeout(() => {
             dispatch(increaseLength(value));

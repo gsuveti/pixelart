@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { increaseLengthAsync, paintPixel } from '../actions/actions';
+import { increaseLengthAsync, paintPixel } from '../actions/pixelart-actions';
 import styled from 'styled-components';
 import { AppState, CanvasState } from '../store';
-import { ActionTypes, PaintObject } from '../actions/types';
-import { AnyAction, Dispatch } from 'redux';
+import { PaintObject } from '../constants/pixelart-types';
+import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 
 

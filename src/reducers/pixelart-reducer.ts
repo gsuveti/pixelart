@@ -1,8 +1,8 @@
 import { CanvasState } from '../store';
-import { ActionTypes, INCREASE_LENGTH, INCREASE_WIDTH, PAINT_PIXEL } from '../actions/types';
+import { ActionTypes, INCREASE_LENGTH, INCREASE_WIDTH, PAINT_PIXEL } from '../constants/pixelart-types';
 
 
-export default (state: CanvasState = {
+const pixelArtReducer = (state: CanvasState = {
     length: 3,
     width: 2,
     pixels: {}
@@ -29,4 +29,6 @@ export default (state: CanvasState = {
         default:
             return state;
     }
-}
+};
+
+export default pixelArtReducer;

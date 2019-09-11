@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { increaseLength, increaseLengthAsync, increaseWidth } from '../actions/actions';
+import {
+    increaseLength,
+    IncreaseLengthActionCreator,
+    increaseLengthAsync,
+    increaseWidth
+} from '../actions/pixelart-actions';
 import styled from 'styled-components';
-import { ActionCreator, ActionCreatorsMapObject, bindActionCreators, Dispatch } from 'redux';
-import { AppActions, IncreaseLengthAction, IncreaseWidthAction } from '../actions/types';
+import { ActionCreatorsMapObject, bindActionCreators, Dispatch } from 'redux';
+import { AppActions } from '../constants/pixelart-types';
 
 interface OwnProps {
 }
 
 interface DispatchProps extends ActionCreatorsMapObject<AppActions> {
-    increaseLength: ActionCreator<IncreaseLengthAction>
-    increaseWidth: ActionCreator<IncreaseWidthAction>
-    increaseLengthAsync: ActionCreator<AppActions>
+    increaseLength: IncreaseLengthActionCreator
+    increaseWidth: typeof increaseWidth
+    increaseLengthAsync: typeof increaseLengthAsync
 }
 
 interface StateProps {
@@ -22,6 +27,7 @@ type Props = StateProps & OwnProps & DispatchProps
 
 class ActionsPanel extends Component<Props, any> {
     render() {
+
         return (
             <WrapperRow>
                 <WrapperCol>

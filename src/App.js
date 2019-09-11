@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Game from './components/tic-tac-toe/game'
 import Pixelart from './components/pixelart'
+import UserSettings from './components/user-settings'
 
 let Wrapper = styled.section`
   width: 60%;
@@ -19,6 +20,7 @@ class App extends Component {
           <Router>
             <Route path="/tic-tac-toe" exact component={Game}/>
             <Route path="/" exact component={Pixelart}/>
+            <Route path="/settings" exact component={UserSettings}/>
           </Router>
         </Wrapper>
       </div>
